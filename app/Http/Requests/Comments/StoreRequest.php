@@ -26,7 +26,7 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required|string|min:3|max:50',
             'body' => 'required|string',
-            'parent_id' => 'nullable|exists:comments'
+            'parent_id' => 'nullable|exists:comments,id'
         ];
     }
 }

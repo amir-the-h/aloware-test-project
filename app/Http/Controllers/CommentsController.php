@@ -16,8 +16,6 @@ class CommentsController extends Controller
     public function index()
     {
         $comments = Comment::query()
-            ->whereNull('parent_id') // only get parent comments
-            ->with(['children']) // then retreive childrens as well
             ->latest() // order comments by the lastest
             ->get();
 
@@ -34,7 +32,7 @@ class CommentsController extends Controller
     {
         // default depth is 1
         $depth = 1;
-        $parent_id = $request->get('parrent_id');
+        $parent_id = $request->get('parent_id');
         if (!is_null($parent_id)) {
             // no need to sanity check for existance of the comment.
             // request validation already checked.

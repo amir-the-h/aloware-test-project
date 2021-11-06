@@ -8,17 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-    
+
     // Maximum nested layers
     const MAX_LAYER = 3;
 
     /**
-     * All children comments
+     * All comments replies
      * Can be empty
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function Children()
+    public function Replies()
     {
         return $this->hasMany(Comment::class, "parent_id", "id");
     }
