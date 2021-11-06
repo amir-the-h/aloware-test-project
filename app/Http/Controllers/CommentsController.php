@@ -55,6 +55,6 @@ class CommentsController extends Controller
         // store it
         $comment->save();
 
-        return response()->json(['message' => 'Your comment has been stored.'], 201);
+        return response()->json($comment, 201);
     }
 }
